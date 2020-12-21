@@ -20,6 +20,7 @@
 const sectionList = document.getElementsByTagName('section');
 const navUl = document.getElementById("navbar__list");
 const fragmentLi = document.createDocumentFragment();
+var rootElement = document.documentElement
 
 /**
  * End Global Variables
@@ -40,6 +41,13 @@ function clear(){
     }
 }
 
+function scrollToTop() {
+    // Scroll to top logic
+    rootElement.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }
 
 /**
  * End Helper Functions
@@ -115,9 +123,7 @@ window.addEventListener("scroll",function(){
 
 // add Event Listener to the button to go up
 
-btntop.addEventListener("click",function(){
-    window.scrollTo(0,0);
-})
+btntop.addEventListener("click",scrollToTop)
 
 // add active class to anchore in nav when section with the Same id
 
@@ -145,9 +151,9 @@ var nav = document.getElementsByClassName("page__header")[0];
 
 window.addEventListener("scroll",function(){
     setTimeout(function(){
-        nav.style.visibility = "hidden";
+        nav.classList.add("hidenav");
     })
-},500);
+},100);
 
 var isScrolling;
 
@@ -156,8 +162,8 @@ var isScrolling;
 window.addEventListener('scroll', function ( event ) {
 	window.clearTimeout( isScrolling );
 	isScrolling = setTimeout(function() {
-		nav.style.visibility = "visible";
-	}, 500);
+		nav.classList.replace("hidenav","shownav");
+	}, 100);
 });
 
 // Listen for clear function

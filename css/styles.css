@@ -2,8 +2,8 @@
  *
  * CSS written based on SMACSS architecture.
  * To learn more, visit: http://smacss.com/
- * 
- * For simplicity, no reset or normalize is added. 
+ *
+ * For simplicity, no reset or normalize is added.
  * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
  *
 */
@@ -127,7 +127,7 @@ section {
 section:nth-of-type(even) .landing__container {
     margin-right: 0;
     margin-left: auto;
-    text-align: right; 
+    text-align: right;
 }
 
 /* Background Circles */
@@ -218,7 +218,7 @@ section.your-active-class .landing__container::after {
 	}
 	to {
 		transform: rotate(360deg)
-		           translate(-1em) 
+		           translate(-1em)
 		           rotate(-360deg);
 	}
 }
@@ -244,7 +244,7 @@ section.your-active-class .landing__container::after {
 }
 
 .float-btn:hover{
-    
+
     background-color: rgba(93, 120, 196, 0.555);
 }
 .float-btn:hover i {
@@ -252,16 +252,40 @@ section.your-active-class .landing__container::after {
 }
 
 .float-btn:active{
-    
+
     background-color: rgb(93, 120, 196);
 }
 .float-btn:active i {
     color: rgb(255, 255, 255);
 }
 
-.active 
+.active
 {
     background: #333 !important;
     color: #fff !important;
     transition: ease 0.3s all;
+}
+
+@keyframes show {
+    from {height: 0%; }
+    to {height:50px; }
+    
+}
+@keyframes hide {
+    from {height: 50px; }
+    to {height:0%; }
+    
+}
+.shownav{
+    animation-name: show;
+    animation-duration: 1s;  
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+.hidenav{
+    animation-name: hide;
+    animation-duration: 1s; 
+    animation-fill-mode: forwards; 
+    overflow: hidden;
 }
