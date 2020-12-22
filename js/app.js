@@ -1,16 +1,16 @@
 /**
- * 
+ *
  * Manipulating the DOM exercise.
  * Exercise programmatically builds navigation,
  * scrolls to anchors from navigation,
  * and highlights section in viewport upon scrolling.
- * 
+ *
  * Dependencies: None
- * 
+ *
  * JS Version: ES2015/ES6
- * 
+ *
  * JS Standard: ESlint
- * 
+ *
 */
 
 /**
@@ -25,10 +25,10 @@ var rootElement = document.documentElement
 /**
  * End Global Variables
  * Start Helper Functions
- * 
+ *
 */
 
-// function to remove active class from the a and section w
+// function to remove active class from the a and section on the top
 
 function clear(){
     const Listanchor = document.getElementsByTagName('a');
@@ -52,7 +52,7 @@ function scrollToTop() {
 /**
  * End Helper Functions
  * Begin Main Functions
- * 
+ *
 */
 
 // build the nav
@@ -83,11 +83,15 @@ function AddClassActive(){
 }
 
 // Scroll to anchor ID using scrollTO event
+
 function ScrollToanchorId(){
     const Listanchor = document.getElementsByTagName('a')
     for (let i=0 ;i< sectionList.length ; i++) {
         Listanchor[i].addEventListener("click",function(){
-            window.scrollTo(0,sectionList[i].offsetTop);
+            window.scrollTo({      
+                top: sectionList[i].offsetTop,
+                behavior: "smooth"
+            });
         });
     }
 }
@@ -95,10 +99,10 @@ function ScrollToanchorId(){
 /**
  * End Main Functions
  * Begin Events
- * 
+ *
 */
 
-// Build menu 
+// Build menu
 
 buildNav();
 
@@ -129,7 +133,7 @@ btntop.addEventListener("click",scrollToTop)
 
 const Listanchor = document.querySelectorAll('.menu__link');
 window.addEventListener("scroll",function(){
-    
+
     for (let section of sectionList) {
         if(section.classList.contains("active"))
         {
@@ -146,15 +150,16 @@ window.addEventListener("scroll",function(){
 });
 
 // function to hide nav bar when scroll
-
+/*
 var nav = document.getElementsByClassName("page__header")[0];
 
 window.addEventListener("scroll",function(){
     setTimeout(function(){
         nav.classList.add("hidenav");
     })
-},100);
+},1000);
 
+*/
 var isScrolling;
 
 // Listen for scroll events
@@ -163,10 +168,9 @@ window.addEventListener('scroll', function ( event ) {
 	window.clearTimeout( isScrolling );
 	isScrolling = setTimeout(function() {
 		nav.classList.replace("hidenav","shownav");
-	}, 100);
+	}, 1000);
 });
 
 // Listen for clear function
 
 window.addEventListener('scroll', clear);
-
